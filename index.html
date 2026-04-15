@@ -3,191 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Only Paws by Vanna | Premium Pet Grooming</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>Only Paws By Vanna | Premium Pet Grooming</title>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         :root {
-            --primary-purple: #ca7acf;
-            --dark-purple: #c041c9;
-            --pure-white: #ffffff;
-            --text-grey: #444;
-            --whatsapp-green: #25D366;
+            --primary-purple: #6a1b9a;
+            --accent-purple: #9c27b0;
+            --text-purple: #7b1fa2; 
+            --light-purple: #f3e5f5;
+            --soft-white: #fdf7ff; 
+            --deep-black: #212121;
         }
 
-        body {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: var(--text-grey);
-            line-height: 1.6;
-            background-color: var(--pure-white);
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { 
+            line-height: 1.6; 
+            color: var(--deep-black); 
+            background-color: var(--soft-white); 
+            overflow-x: hidden;
+            padding-top: 80px; 
         }
 
-        h1, h2, h3 {
-            font-family: 'Quicksand', sans-serif;
-            font-weight: 700;
-            color: var(--dark-purple);
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 8%; z-index: 1000; box-shadow: 0 2px 15px rgba(106, 27, 154, 0.1);
         }
-
-        nav {
-            padding: 10px 10%; /* Adjusted padding for logo */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--pure-white);
-            position: sticky;
-            top: 1000;
-            z-index: 1000;
-            box-shadow: 0 5px 13px rgba(0,0,0,0.05);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
             text-decoration: none;
         }
-
-        .logo-image {
-            height: 50px; /* Adjust height as needed */
-            margin-right: 15px;
+        
+        .logo-img {
+            height: 50px; 
+            width: auto;
+            object-fit: contain;
         }
 
-        .logo-text {
-            font-size: 1.5rem;
-            color: var(--dark-purple);
-            font-weight: 700;
-            font-family: 'Quicksand', sans-serif;
+        .logo-text { 
+            font-weight: 800; 
+            font-size: 20px; 
+            color: var(--primary-purple); 
+            letter-spacing: 1px; 
         }
 
-        .hero {
-            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
-                        url('https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=1600') no-repeat center center/cover;
-            height: 65vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        nav a { margin-left: 25px; text-decoration: none; color: #555; font-weight: 600; transition: 0.3s; font-size: 0.85rem; }
+        nav a:hover { color: var(--primary-purple); }
+
+        /* --- HOME SECTION --- */
+        #home {
+            height: 85vh;
+            width: 100%;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
             align-items: center;
             text-align: center;
             padding: 0 20px;
+            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+                        url('https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat fixed;
         }
 
-        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        #home h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 20px; font-weight: 800; color: var(--primary-purple); text-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        #home p { font-size: 1.2rem; font-weight: 400; color: #333; max-width: 650px; background: rgba(255,255,255,0.6); padding: 10px 20px; border-radius: 10px; }
 
-        .about {
-            padding: 60px 10%;
-            text-align: center;
+        /* --- SECTIONS --- */
+        section { padding: 80px 8%; }
+        h2 { text-align: center; margin-bottom: 50px; font-size: 2.2rem; color: var(--deep-black); text-transform: uppercase; font-weight: 800; }
+        h2::after { content: ''; display: block; width: 60px; height: 4px; background: var(--primary-purple); margin: 15px auto; border-radius: 2px; }
+
+        /* --- REVIEWS --- */
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .review-card { 
+            background: #fff; padding: 35px; border-radius: 20px; 
+            text-decoration: none; color: inherit; display: block; transition: 0.3s;
+            border: 1px solid var(--light-purple);
+        }
+        .review-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(106, 27, 154, 0.1); }
+        .stars { color: #fbbc04; margin-bottom: 10px; font-size: 20px; }
+        
+        .view-more-btn { 
+            display: block; width: fit-content; margin: 50px auto 0; padding: 18px 45px;
+            background: var(--primary-purple); color: #fff; text-decoration: none; border-radius: 50px; font-weight: 800;
+            transition: 0.3s; box-shadow: 0 5px 15px rgba(106, 27, 154, 0.3);
         }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px 5% 60px;
+        /* --- SERVICES --- */
+        .services-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .service-column { background: #fff; padding: 25px; border-radius: 20px; border: 1px solid var(--light-purple); transition: 0.3s; display: flex; flex-direction: column; }
+        .service-column h3 { color: var(--primary-purple); margin-bottom: 15px; font-size: 1.5rem; text-align: center; }
+        
+        .service-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .service-gallery img { width: 100%; height: 120px; object-fit: cover; border-radius: 10px; background-color: #eee; }
+        .service-gallery img.large { grid-column: span 2; height: 180px; }
+        .service-list { list-style: none; margin-top: auto; }
+        .service-list li { padding: 10px 0; border-bottom: 1px solid var(--light-purple); font-size: 0.9rem; color: #555; }
+        .service-list li::before { content: "💜 "; font-size: 0.8rem; }
+
+        /* --- ABOUT US --- */
+        .about-wrap { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; }
+        .owner-img { 
+            width: 320px; height: 400px; object-fit: cover;
+            border-radius: 20px; box-shadow: 20px 20px 0px var(--primary-purple);
+        }
+        .about-text { flex: 1; min-width: 320px; }
+
+        /* --- STACKED SOCIAL ICONS --- */
+        .floating-nav { 
+            position: fixed; 
+            right: 25px; 
+            bottom: 30px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            z-index: 9999; 
         }
 
-        .gallery-item {
-            height: 350px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            background-color: #f0f0f0;
-        }
-
-        .services {
-            background-color: #c5a8cb;
-            padding: 80px 10%;
-            text-align: center;
-        }
-
-        .service-grid {
+        .float-btn { 
+            width: 60px; 
+            height: 60px; 
+            border-radius: 50%; 
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .service-card {
-            background: rgb(255, 255, 255);
-            padding: 30px;
-            border-radius: 20px;
-            width: 260px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--whatsapp-green);
-            color: white;
-            border-radius: 50px;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            z-index: 2000;
-            transition: transform 0.3s ease;
+            text-decoration: none; 
+            color: white; 
+            font-size: 32px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25); 
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .float-btn:hover { transform: scale(1.15); }
+        .wa { background-color: #25D366; }
+        .ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+
+        footer { text-align: center; padding: 40px; background: var(--primary-purple); color: #fff; }
+
+        /* --- RESPONSIVENESS --- */
+        @media (max-width: 1024px) {
+            .services-container { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
+            header { padding: 10px 5%; }
         }
 
-        .whatsapp-float:hover { transform: scale(1.1); }
-
-        footer {
-            background: #f4f4f4;
-            text-align: center;
-            padding: 40px 0;
-            color: #777;
+        @media (max-width: 768px) {
+            .logo-text { display: none; } /* Show only icon logo on tiny screens */
+            .logo-img { height: 40px; }
+            nav a { margin-left: 12px; font-size: 0.75rem; }
+            .about-wrap { justify-content: center; text-align: center; }
+            .owner-img { width: 100%; max-width: 300px; margin-bottom: 30px; }
         }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/919561821648?text=Hello%20Vanna!%20I'd%20like%20to%20book%20a%20grooming%20session." class="whatsapp-float" target="_blank">
-        <svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-    </a>
-
-    <nav>
-        <a href="#" class="logo-container">
-            <img src="logo.png.png" alt="Only Paws by Vanna Logo" class="logo-image">
-            <span class="logo-text"</span>
+    <header>
+        <a href="#home" class="logo">
+            <img src="logo.png" alt="Only Paws Logo" class="logo-img" onerror="this.src='logo.png..png'">
+            <span class="logo-text">ONLY PAWS</span>
         </a>
-        <div style="font-weight: 600;">Orlim, Goa</div>
-    </nav>
-
-    <header class="hero">
-        <h1>Only Paws by Vanna</h1>
-        <p>A clean, bright, well-maintained space where pooches are family.</p>
+        <nav>
+            <a href="#home">HOME</a>
+            <a href="#reviews">REVIEWS</a>
+            <a href="#services">SERVICES</a>
+            <a href="#about-us">ABOUT US</a>
+        </nav>
     </header>
 
-    <section class="about">
-        <h2>Treating Every Pet Like Family</h2>
-        <p>Expert pet grooming in a modern, hygienic environment.</p>
-    </section>
+    <main>
+        <section id="home">
+            <h1 data-aos="fade-up">Only Paws by Vanna</h1>
+            <p data-aos="fade-up" data-aos-delay="200">A clean, bright, and loving space where your pooches are treated like family.</p>
+        </section>
 
-    <section class="gallery">
-        <div class="gallery-item" style="background-image: url('https://assets3.thrillist.com/v1/image/3059921/1584x832/scale;webp=auto;jpeg_quality=80;progressive.jpg?auto=format&fit=crop&q=20&w=200');"></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=1000');"></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1511275539165-cc46b1ee89bf?auto=format&fit=crop&q=80&w=1000');"></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=1000');"></div>
-    </section>
+        <section id="reviews">
+            <h2 data-aos="fade-down">Customer Feedback</h2>
+            <div class="reviews-grid">
+                <div class="review-card" data-aos="zoom-in">
+                    <div class="stars">★★★★★</div>
+                    <p>"Excellent service! Vanna is so patient with my nervous cat. Highly recommend!"</p>
+                    <small><strong>— Sarah J.</strong></small>
+                </div>
+                <div class="review-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stars">★★★★★</div>
+                    <p>"Professional, clean environment, and my dog looks amazing every single time."</p>
+                    <small><strong>— Mike R.</strong></small>
+                </div>
+                <div class="review-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stars">★★★★★</div>
+                    <p>"The best grooming experience in Goa. Vanna truly loves the animals she works with."</p>
+                    <small><strong>— Elena P.</strong></small>
+                </div>
+            </div>
+            <a href="https://maps.google.com" class="view-more-btn" target="_blank" rel="noopener">Read More Reviews</a>
+        </section>
 
-    <section class="services">
-        <h2>Our Services</h2>
-        <div class="service-grid">
-            <div class="service-card"><h3>Full Groom</h3><p>Complete styling and sanitation.</p></div>
-            <div class="service-card"><h3>Bath & Dry</h3><p>Deep cleansing for a fresh coat.</p></div>
-            <div class="service-card"><h3>Nail Spa</h3><p>Gentle care for healthy paws.</p></div>
-        </div>
-    </section>
+        <section id="services">
+            <h2 data-aos="fade-up">Our Pet Services</h2>
+            <div class="services-container">
+                <div class="service-column" data-aos="fade-right">
+                    <h3>Full Groom</h3>
+                    <div class="service-gallery">
+                        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=60&w=400" class="large" alt="Dog grooming">
+                        <img src="https://images.unsplash.com/photo-1591768793355-74d7c80b0e17?auto=format&fit=crop&q=60&w=200" alt="Grooming tools">
+                        <img src="https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&q=60&w=200" alt="Happy dog">
+                    </div>
+                    <ul class="service-list">
+                        <li>Full Breed Haircut</li>
+                        <li>Deep Cleansing Bath</li>
+                        <li>Nail Clipping & Buffing</li>
+                    </ul>
+                </div>
+
+                <div class="service-column" data-aos="fade-up">
+                    <h3>Hygiene Care</h3>
+                    <div class="service-gallery">
+                        <img src="https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&q=60&w=400" class="large" alt="Pet care">
+                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=60&w=200" alt="Brushing">
+                        <img src="https://images.unsplash.com/photo-1623333393631-014c09f1b85a?auto=format&fit=crop&q=60&w=200" alt="Clean pet">
+                    </div>
+                    <ul class="service-list">
+                        <li>Ear Cleaning & Hygiene</li>
+                        <li>Teeth Brushing</li>
+                        <li>Sanitary Trimming</li>
+                    </ul>
+                </div>
+
+                <div class="service-column" data-aos="fade-left">
+                    <h3>Cat Specials</h3>
+                    <div class="service-gallery">
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=60&w=400" class="large" alt="Cat grooming">
+                        <img src="https://images.unsplash.com/photo-1548247416-ec66f4900b2e?auto=format&fit=crop&q=60&w=200" alt="Cat bath">
+                        <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&q=60&w=200" alt="Calm cat">
+                    </div>
+                    <ul class="service-list">
+                        <li>Stress-Free Handling</li>
+                        <li>Lion Cuts & De-shedding</li>
+                        <li>Dry Foam Cleaning</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-us">
+            <div class="about-wrap">
+                <img src="2.jpeg" class="owner-img" data-aos="fade-right" alt="Vanna with a pet" onerror="this.src='https://images.unsplash.com/photo-1581888227599-779811939961?auto=format&fit=crop&q=80&w=400'">
+                <div class="about-text" data-aos="fade-left">
+                    <h2>Meet Vanna</h2>
+                    <p>Welcome to <strong>Only Paws</strong>, where we believe grooming is not just about looks, but about health and happiness. Based in Goa, we provide a clean, peaceful, and cage-free environment.</p>
+                    <p>Vanna is a certified pet professional with over 8 years of experience. She specializes in handling anxious pets, ensuring every visit is a positive experience for your furry family members.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="floating-nav">
+        <a href="https://wa.me/919561821648" class="float-btn wa" target="_blank" rel="noopener" title="WhatsApp Us">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/onlypaws_by_vanna" class="float-btn ig" target="_blank" rel="noopener" title="Follow us on Instagram">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+    </div>
 
     <footer>
-        <p>&copy; 2026 Only Paws by Vanna | Orlim, Goa</p>
-        <p>Contact: +91 9561821648</p>
+        <p>© 2026 Only Paws by Vanna | Premium Pet Grooming Goa</p>
     </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ 
+            duration: 1000, 
+            once: true,
+            offset: 100 
+        });
+    </script>
 
 </body>
 </html>
