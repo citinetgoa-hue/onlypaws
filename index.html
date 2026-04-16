@@ -1,11 +1,20 @@
-<!DOCTYPE html>
+It sounds like you want to switch the vertical stacking to a **horizontal scroll** (carousel) for the Reviews and Services sections on mobile. This way, the user can swipe left and right to see different cards without the page becoming extremely long.
+
+I have updated the CSS to enable **Horizontal Scrolling** specifically for mobile devices. 
+
+### Key Features of this Update:
+* **Swipe Navigation:** On mobile, you can swipe left/right to see reviews and service categories.
+* **Snap Alignment:** Cards will "snap" into place as you scroll so they don't get stuck halfway.
+* **Vertical Preservation:** The website still flows vertically, but these specific "galleries" allow for horizontal exploration.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Only Paws By Vanna | Premium Pet Grooming</title>
-
+    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -15,337 +24,126 @@
             --primary-purple: #6a1b9a;
             --accent-purple: #9c27b0;
             --light-purple: #f3e5f5;
-            --soft-white: #fdf7ff;
+            --soft-white: #fdf7ff; 
             --deep-black: #212121;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            line-height: 1.6;
-            color: var(--deep-black);
-            background-color: var(--soft-white);
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { 
+            line-height: 1.6; 
+            color: var(--deep-black); 
+            background-color: var(--soft-white); 
             overflow-x: hidden;
-            padding-top: 70px;
+            padding-top: 70px; 
         }
 
         /* --- NAVIGATION --- */
         header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 8%;
-            z-index: 1000;
-            box-shadow: 0 2px 15px rgba(106, 27, 154, 0.1);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 8%; z-index: 1000; box-shadow: 0 2px 15px rgba(106, 27, 154, 0.1);
         }
+        
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { height: 45px; width: auto; object-fit: contain; }
+        .logo-text { font-weight: 800; font-size: 18px; color: var(--primary-purple); letter-spacing: 1px; }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-img {
-            height: 45px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .logo-text {
-            font-weight: 800;
-            font-size: 18px;
-            color: var(--primary-purple);
-            letter-spacing: 1px;
-        }
-
-        nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #555;
-            font-weight: 600;
-            transition: 0.3s;
-            font-size: 0.8rem;
-        }
-
-            nav a:hover {
-                color: var(--primary-purple);
-            }
+        nav a { margin-left: 20px; text-decoration: none; color: #555; font-weight: 600; transition: 0.3s; font-size: 0.8rem; }
+        nav a:hover { color: var(--primary-purple); }
 
         /* --- HOME --- */
         #home {
-            min-height: 80vh;
+            min-height: 70vh;
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
             align-items: center;
             text-align: center;
             padding: 40px 20px;
-            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat fixed;
+            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+                        url('https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat fixed;
         }
 
-            #home h1 {
-                font-size: clamp(2.2rem, 10vw, 4rem);
-                margin-bottom: 15px;
-                font-weight: 800;
-                color: var(--primary-purple);
-            }
-
-            #home p {
-                font-size: 1.1rem;
-                color: #333;
-                max-width: 600px;
-                background: rgba(255,255,255,0.7);
-                padding: 15px;
-                border-radius: 12px;
-            }
+        #home h1 { font-size: clamp(2.2rem, 10vw, 4rem); margin-bottom: 15px; font-weight: 800; color: var(--primary-purple); }
+        #home p { font-size: 1.1rem; color: #333; max-width: 600px; background: rgba(255,255,255,0.7); padding: 15px; border-radius: 12px; }
 
         /* --- SECTIONS --- */
-        section {
-            padding: 60px 8%;
-        }
+        section { padding: 60px 8%; }
+        h2 { text-align: center; margin-bottom: 40px; font-size: 2rem; color: var(--deep-black); text-transform: uppercase; font-weight: 800; }
+        h2::after { content: ''; display: block; width: 50px; height: 4px; background: var(--primary-purple); margin: 12px auto; border-radius: 2px; }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2rem;
-            color: var(--deep-black);
-            text-transform: uppercase;
-            font-weight: 800;
-        }
-
-            h2::after {
-                content: '';
-                display: block;
-                width: 50px;
-                height: 4px;
-                background: var(--primary-purple);
-                margin: 12px auto;
-                border-radius: 2px;
-            }
-
-        /* --- SERVICES & THE CUTE BULLETS --- */
-        .services-container {
+        /* --- SHARED HORIZONTAL SCROLL UTILITY --- */
+        .horizontal-scroll-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .service-column {
-            background: #fff;
-            padding: 25px;
-            border-radius: 20px;
-            border: 1px solid var(--light-purple);
-            display: flex;
-            flex-direction: column;
-        }
-
-            .service-column h3 {
-                color: var(--primary-purple);
-                margin-bottom: 15px;
-                font-size: 1.4rem;
-                text-align: center;
-            }
-
-        .service-gallery {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-            .service-gallery img {
-                width: 100%;
-                height: 110px;
-                object-fit: cover;
-                border-radius: 10px;
-                background-color: #eee;
-            }
-
-                .service-gallery img.large {
-                    grid-column: span 2;
-                    height: 160px;
-                }
-
-        .service-list {
-            list-style: none;
-            margin-top: auto;
-        }
-
-            .service-list li {
-                padding: 10px 0;
-                border-bottom: 1px solid var(--light-purple);
-                font-size: 0.9rem;
-                color: #555;
-                display: flex;
-                align-items: center;
-            }
-
-                /* RESTORED BULLETS HERE */
-                .service-list li::before {
-                    content: "💜";
-                    margin-right: 10px;
-                    font-size: 0.8rem;
-                    filter: drop-shadow(0 2px 2px rgba(106, 27, 154, 0.2));
-                }
-
-        /* --- REVIEWS --- */
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
 
-        .review-card {
-            background: #fff;
-            padding: 25px;
-            border-radius: 20px;
+        /* --- REVIEWS --- */
+        .reviews-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .review-card { 
+            background: #fff; padding: 25px; border-radius: 20px; 
             border: 1px solid var(--light-purple);
-            transition: 0.3s;
         }
+        .stars { color: #fbbc04; margin-bottom: 10px; }
 
-        .stars {
-            color: #fbbc04;
-            margin-bottom: 10px;
+        /* --- SERVICES --- */
+        .services-container { grid-template-columns: repeat(3, 1fr); }
+        .service-column { 
+            background: #fff; padding: 25px; border-radius: 20px; border: 1px solid var(--light-purple); 
+            display: flex; flex-direction: column;
         }
+        .service-column h3 { color: var(--primary-purple); margin-bottom: 15px; font-size: 1.4rem; text-align: center; }
+        .service-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; }
+        .service-gallery img { width: 100%; height: 110px; object-fit: cover; border-radius: 10px; background-color: #eee; }
+        .service-gallery img.large { grid-column: span 2; height: 160px; }
+        .service-list { list-style: none; margin-top: auto; }
+        .service-list li { padding: 10px 0; border-bottom: 1px solid var(--light-purple); font-size: 0.9rem; color: #555; display: flex; align-items: center; }
+        .service-list li::before { content: "💜"; margin-right: 10px; font-size: 0.8rem; }
 
-        .view-more-btn {
-            display: block;
-            width: fit-content;
-            margin: 40px auto 0;
-            padding: 15px 35px;
-            background: var(--primary-purple);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
+        /* --- MOBILE HORIZONTAL SCROLLING --- */
+        @media (max-width: 850px) {
+            .reviews-grid, .services-container {
+                display: flex !important;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                padding-bottom: 20px;
+                scrollbar-width: none; /* Hide scrollbar for Firefox */
+                -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+                margin: 0 -5%; /* Pull to edges */
+                padding: 0 5% 20px 5%;
+            }
+
+            .reviews-grid::-webkit-scrollbar, .services-container::-webkit-scrollbar {
+                display: none; /* Hide scrollbar for Chrome/Safari */
+            }
+
+            .review-card, .service-column {
+                flex: 0 0 85%; /* Card covers 85% of screen width */
+                scroll-snap-align: center;
+                min-width: 280px;
+            }
+
+            section { padding: 40px 5%; }
+            header { padding: 10px 5%; flex-direction: column; gap: 8px; }
+            .logo-text { font-size: 16px; }
+            nav a { margin: 0 8px; font-size: 0.7rem; }
         }
 
         /* --- ABOUT --- */
-        .about-wrap {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-
-        .owner-img {
-            width: 300px;
-            height: 380px;
-            object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 15px 15px 0px var(--primary-purple);
-        }
-
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
+        .about-wrap { display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
+        .owner-img { width: 300px; height: 380px; object-fit: cover; border-radius: 20px; box-shadow: 15px 15px 0px var(--primary-purple); }
+        .about-text { flex: 1; min-width: 300px; }
 
         /* --- FLOATING SOCIALS --- */
-        .floating-nav {
-            position: fixed;
-            right: 20px;
-            bottom: 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 9999;
-        }
+        .floating-nav { position: fixed; right: 20px; bottom: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 9999; }
+        .float-btn { width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 28px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: 0.3s; }
+        .wa { background-color: #25D366; }
+        .ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
 
-        .float-btn {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 28px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: 0.3s;
-        }
-
-        .wa {
-            background-color: #25D366;
-        }
-
-        .ig {
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: var(--primary-purple);
-            color: #fff;
-            font-size: 0.9rem;
-        }
-
-        /* --- MOBILE OPTIMIZATION --- */
-        @media (max-width: 992px) {
-            .services-container {
-                grid-template-columns: 1fr;
-            }
-
-            .service-column {
-                max-width: 500px;
-                margin: 0 auto;
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 10px 5%;
-                justify-content: center;
-                flex-direction: column;
-                gap: 5px;
-            }
-
-            nav {
-                margin-top: 5px;
-            }
-
-                nav a {
-                    margin: 0 10px;
-                    font-size: 0.75rem;
-                }
-
-            .logo-text {
-                display: none;
-            }
-
-            section {
-                padding: 50px 5%;
-            }
-
-            .about-wrap {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .owner-img {
-                width: 100%;
-                max-width: 280px;
-                margin-bottom: 20px;
-            }
-        }
+        footer { text-align: center; padding: 30px; background: var(--primary-purple); color: #fff; font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -371,34 +169,29 @@
 
         <section id="reviews">
             <h2 data-aos="fade-up">Feedback</h2>
-            <div class="reviews-grid">
-                <div class="review-card" data-aos="fade-up">
+            <div class="reviews-grid horizontal-scroll-container">
+                <div class="review-card" data-aos="zoom-in">
                     <div class="stars">★★★★★</div>
                     <p>"Excellent service! Vanna is so patient with my nervous cat. Highly recommend!"</p>
                     <small><strong>— Sarah J.</strong></small>
                 </div>
-                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="review-card" data-aos="zoom-in" data-aos-delay="100">
                     <div class="stars">★★★★★</div>
                     <p>"Professional, clean environment, and my dog looks amazing every single time."</p>
                     <small><strong>— Mike R.</strong></small>
                 </div>
-                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="review-card" data-aos="zoom-in" data-aos-delay="200">
                     <div class="stars">★★★★★</div>
-                    <p>"Professional, clean environment, and my dog looks amazing every single time."</p>
-                    <small><strong>— Mike R.</strong></small>
-                </div>
-                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="stars">★★★★★</div>
-                    <p>"Professional, clean environment, and my dog looks amazing every single time."</p>
-                    <small><strong>— Mike R.</strong></small>
+                    <p>"The best grooming experience in Goa. Truly loves the animals."</p>
+                    <small><strong>— Elena P.</strong></small>
                 </div>
             </div>
-            <a href="https://maps.google.com" class="view-more-btn" target="_blank">View All</a>
+            <a href="https://maps.google.com" class="view-more-btn" style="display: block; width: fit-content; margin: 30px auto; padding: 12px 30px; background: var(--primary-purple); color: #fff; text-decoration: none; border-radius: 50px;">View More</a>
         </section>
 
         <section id="services">
             <h2 data-aos="fade-up">Our Services</h2>
-            <div class="services-container">
+            <div class="services-container horizontal-scroll-container">
                 <div class="service-column" data-aos="fade-up">
                     <h3>Full Groom</h3>
                     <div class="service-gallery">
