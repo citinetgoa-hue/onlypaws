@@ -21,121 +21,101 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         html { scroll-behavior: smooth; }
         body { 
-            line-height: 1.6; 
-            color: var(--deep-black); 
-            background-color: var(--soft-white); 
-            overflow-x: hidden;
-            padding-top: 70px; 
+            line-height: 1.6; color: var(--deep-black); background-color: var(--soft-white); 
+            overflow-x: hidden; padding-top: 60px; 
         }
 
-        /* --- HEADER: STAYS ON ONE LINE --- */
+        /* --- HEADER: FORCED SINGLE LINE --- */
         header {
             position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 10px 5%; z-index: 1000; box-shadow: 0 2px 15px rgba(106, 27, 154, 0.1);
+            backdrop-filter: blur(10px); display: flex; justify-content: space-between; 
+            align-items: center; padding: 10px 4%; z-index: 1000; box-shadow: 0 2px 15px rgba(106, 27, 154, 0.1);
+            flex-wrap: nowrap; /* Prevents logo and nav from splitting */
         }
         
-        .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; min-width: fit-content; }
-        .logo-img { height: 35px; width: auto; object-fit: contain; }
-        .logo-text { font-weight: 800; font-size: 16px; color: var(--primary-purple); letter-spacing: 0.5px; white-space: nowrap; }
+        .logo { display: flex; align-items: center; gap: 6px; text-decoration: none; flex-shrink: 0; }
+        .logo-img { height: 32px; width: auto; object-fit: contain; }
+        .logo-text { font-weight: 800; font-size: 14px; color: var(--primary-purple); letter-spacing: 0.5px; white-space: nowrap; }
 
-        nav { display: flex; align-items: center; }
-        nav a { margin-left: 12px; text-decoration: none; color: #555; font-weight: 700; transition: 0.3s; font-size: 0.75rem; white-space: nowrap; }
+        nav { display: flex; align-items: center; gap: 10px; }
+        nav a { text-decoration: none; color: #555; font-weight: 700; font-size: 11px; white-space: nowrap; }
         nav a:hover { color: var(--primary-purple); }
-
-        /* --- SECTIONS --- */
-        section { padding: 50px 5%; }
-        h2 { text-align: center; margin-bottom: 30px; font-size: 1.8rem; color: var(--deep-black); text-transform: uppercase; font-weight: 800; }
-        h2::after { content: ''; display: block; width: 40px; height: 4px; background: var(--primary-purple); margin: 10px auto; border-radius: 2px; }
 
         /* --- HOME --- */
         #home {
-            min-height: 70vh; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 40px 20px;
+            min-height: 65vh; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 20px;
             background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
                         url('https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat fixed;
         }
+        #home h1 { font-size: 2.2rem; font-weight: 800; color: var(--primary-purple); margin-bottom: 10px; }
+        #home p { font-size: 0.95rem; color: #333; max-width: 450px; background: rgba(255,255,255,0.7); padding: 10px; border-radius: 10px; }
 
-        /* --- HORIZONTAL SWIPE FOR REVIEWS & SERVICES (MOBILE) --- */
+        /* --- SECTIONS --- */
+        section { padding: 40px 5%; }
+        h2 { text-align: center; margin-bottom: 25px; font-size: 1.6rem; color: var(--deep-black); font-weight: 800; }
+        h2::after { content: ''; display: block; width: 35px; height: 3px; background: var(--primary-purple); margin: 8px auto; }
+
+        /* --- HORIZONTAL SWIPE (MOBILE) --- */
         .reviews-grid, .services-container {
             display: flex; gap: 15px; overflow-x: auto; scroll-snap-type: x mandatory;
-            padding-bottom: 15px; scrollbar-width: none;
+            padding-bottom: 15px; scrollbar-width: none; -ms-overflow-style: none;
         }
         .reviews-grid::-webkit-scrollbar, .services-container::-webkit-scrollbar { display: none; }
 
         .review-card, .service-column {
             flex: 0 0 85%; scroll-snap-align: center; background: #fff; padding: 20px; 
-            border-radius: 20px; border: 1px solid var(--light-purple); min-width: 270px;
+            border-radius: 15px; border: 1px solid var(--light-purple); min-width: 260px;
         }
 
-        /* --- SERVICE STYLING & PURPLE BULLETS --- */
-        .service-column h3 { color: var(--primary-purple); margin-bottom: 12px; font-size: 1.3rem; text-align: center; }
-        .service-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px; }
-        .service-gallery img { width: 100%; height: 100px; object-fit: cover; border-radius: 8px; }
-        .service-gallery img.large { grid-column: span 2; height: 140px; }
+        .service-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 12px; }
+        .service-gallery img { width: 100%; height: 90px; object-fit: cover; border-radius: 8px; }
+        .service-gallery img.large { grid-column: span 2; height: 130px; }
         
         .service-list { list-style: none; }
-        .service-list li { padding: 8px 0; border-bottom: 1px solid var(--light-purple); font-size: 0.85rem; display: flex; align-items: center; }
-        .service-list li::before { content: "💜"; margin-right: 8px; font-size: 0.75rem; }
+        .service-list li { padding: 6px 0; border-bottom: 1px solid var(--light-purple); font-size: 0.8rem; display: flex; align-items: center; }
+        .service-list li::before { content: "💜"; margin-right: 8px; }
 
-        /* --- FLOATING SOCIALS: TRUE OVERLAY --- */
+        /* --- FLOATING SOCIALS: THE FIX --- */
         .floating-nav { 
             position: fixed; 
-            right: 20px; 
-            bottom: 25px; 
+            right: 15px; 
+            bottom: 20px; 
             display: flex; 
             flex-direction: column; 
             gap: 12px; 
             z-index: 9999;
-            background: transparent; 
-            pointer-events: none; 
+            background: none !important; /* Forces no background */
+            pointer-events: none; /* Let clicks pass through empty space */
         }
 
         .float-btn { 
-            pointer-events: auto; 
-            width: 55px; height: 55px; 
-            border-radius: 50%; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            color: white; 
-            font-size: 28px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+            pointer-events: auto; /* Only buttons react to touch */
+            width: 50px; height: 50px; border-radius: 50%; display: flex; 
+            justify-content: center; align-items: center; color: white; 
+            font-size: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
             text-decoration: none;
-            transition: transform 0.2s ease;
         }
-        
-        .float-btn:active { transform: scale(0.9); }
         .wa { background-color: #25D366; }
         .ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+
+        /* --- ABOUT --- */
+        .about-wrap { text-align: center; }
+        .owner-img { width: 220px; height: 280px; object-fit: cover; border-radius: 15px; box-shadow: 8px 8px 0px var(--primary-purple); margin-bottom: 20px; }
 
         /* --- DESKTOP VIEW --- */
         @media (min-width: 850px) {
             header { padding: 10px 8%; }
-            .logo-img { height: 45px; }
+            .logo-img { height: 40px; }
             .logo-text { font-size: 18px; }
-            nav a { font-size: 0.85rem; margin-left: 25px; }
-            
-            .reviews-grid, .services-container { 
-                display: grid; 
-                grid-template-columns: repeat(3, 1fr); 
-                overflow-x: visible; 
-                gap: 25px;
-            }
+            nav a { font-size: 13px; margin-left: 20px; }
+            .reviews-grid, .services-container { display: grid; grid-template-columns: repeat(3, 1fr); overflow-x: visible; }
             .review-card, .service-column { flex: none; width: auto; }
-            
-            .about-wrap { display: flex; flex-direction: row; align-items: center; text-align: left; gap: 50px; }
-            .owner-img { width: 300px; height: 380px; }
+            .about-wrap { display: flex; flex-direction: row; text-align: left; gap: 40px; }
+            #home h1 { font-size: 3.5rem; }
         }
 
-        /* --- MOBILE SPECIFICS --- */
-        @media (max-width: 849px) {
-            .about-wrap { text-align: center; }
-            .owner-img { width: 250px; height: 320px; margin: 0 auto 20px; display: block; border-radius: 20px; box-shadow: 10px 10px 0px var(--primary-purple); }
-        }
-
-        footer { text-align: center; padding: 25px; background: var(--primary-purple); color: #fff; font-size: 0.8rem; }
+        footer { text-align: center; padding: 20px; background: var(--primary-purple); color: #fff; font-size: 0.75rem; }
     </style>
 </head>
 <body>
@@ -160,35 +140,35 @@
         </section>
 
         <section id="reviews">
-            <h2 data-aos="fade-up">Feedback</h2>
+            <h2>Feedback</h2>
             <div class="reviews-grid">
-                <div class="review-card" data-aos="zoom-in">
-                    <div class="stars">★★★★★</div>
-                    <p>"Excellent service! Vanna is so patient with my nervous cat. Highly recommend!"</p>
+                <div class="review-card" data-aos="fade-up">
+                    <div style="color: #fbbc04; margin-bottom: 5px;">★★★★★</div>
+                    <p style="font-size: 0.85rem;">"Excellent service! Vanna is so patient with my nervous cat. Highly recommend!"</p>
                     <small><strong>— Sarah J.</strong></small>
                 </div>
-                <div class="review-card" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="stars">★★★★★</div>
-                    <p>"Professional, clean environment, and my dog looks amazing every single time."</p>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+                    <div style="color: #fbbc04; margin-bottom: 5px;">★★★★★</div>
+                    <p style="font-size: 0.85rem;">"Professional, clean environment, and my dog looks amazing every single time."</p>
                     <small><strong>— Mike R.</strong></small>
                 </div>
-                <div class="review-card" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="stars">★★★★★</div>
-                    <p>"The best grooming experience in Goa. Truly loves the animals."</p>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+                    <div style="color: #fbbc04; margin-bottom: 5px;">★★★★★</div>
+                    <p style="font-size: 0.85rem;">"The best grooming experience in Goa. Truly loves the animals."</p>
                     <small><strong>— Elena P.</strong></small>
                 </div>
             </div>
         </section>
 
         <section id="services">
-            <h2 data-aos="fade-up">Our Services</h2>
+            <h2>Our Services</h2>
             <div class="services-container">
                 <div class="service-column" data-aos="fade-up">
                     <h3>Full Groom</h3>
                     <div class="service-gallery">
-                        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=60&w=400" class="large" alt="Grooming">
-                        <img src="https://images.unsplash.com/photo-1591768793355-74d7c80b0e17?auto=format&fit=crop&q=60&w=200" alt="Grooming">
-                        <img src="https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&q=60&w=200" alt="Grooming">
+                        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=60&w=400" class="large">
+                        <img src="https://images.unsplash.com/photo-1591768793355-74d7c80b0e17?auto=format&fit=crop&q=60&w=200">
+                        <img src="https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&q=60&w=200">
                     </div>
                     <ul class="service-list">
                         <li>Full Breed Haircut</li>
@@ -200,9 +180,9 @@
                 <div class="service-column" data-aos="fade-up" data-aos-delay="100">
                     <h3>Hygiene Care</h3>
                     <div class="service-gallery">
-                        <img src="https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&q=60&w=400" class="large" alt="Care">
-                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=60&w=200" alt="Care">
-                        <img src="https://images.unsplash.com/photo-1623333393631-014c09f1b85a?auto=format&fit=crop&q=60&w=200" alt="Care">
+                        <img src="https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&q=60&w=400" class="large">
+                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=60&w=200">
+                        <img src="https://images.unsplash.com/photo-1623333393631-014c09f1b85a?auto=format&fit=crop&q=60&w=200">
                     </div>
                     <ul class="service-list">
                         <li>Ear Cleaning</li>
@@ -214,9 +194,9 @@
                 <div class="service-column" data-aos="fade-up" data-aos-delay="200">
                     <h3>Cat Specials</h3>
                     <div class="service-gallery">
-                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=60&w=400" class="large" alt="Cat">
-                        <img src="https://images.unsplash.com/photo-1548247416-ec66f4900b2e?auto=format&fit=crop&q=60&w=200" alt="Cat">
-                        <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&q=60&w=200" alt="Cat">
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=60&w=400" class="large">
+                        <img src="https://images.unsplash.com/photo-1548247416-ec66f4900b2e?auto=format&fit=crop&q=60&w=200">
+                        <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&q=60&w=200">
                     </div>
                     <ul class="service-list">
                         <li>Stress-Free Handling</li>
@@ -229,10 +209,10 @@
 
         <section id="about-us">
             <div class="about-wrap">
-                <img src="2.jpeg" class="owner-img" data-aos="fade-right" alt="Vanna" onerror="this.src='https://images.unsplash.com/photo-1581888227599-779811939961?auto=format&fit=crop&q=80&w=400'">
-                <div class="about-text" data-aos="fade-left">
+                <img src="2.jpeg" class="owner-img" onerror="this.src='https://images.unsplash.com/photo-1581888227599-779811939961?auto=format&fit=crop&q=80&w=400'">
+                <div class="about-text">
                     <h2>Meet Vanna</h2>
-                    <p>Welcome to <strong>Only Paws</strong>, where grooming is about health and happiness. We provide a peaceful, cage-free environment in Goa.</p>
+                    <p style="font-size: 0.9rem;">Welcome to <strong>Only Paws</strong>, where grooming is about health and happiness. We provide a peaceful, cage-free environment in Goa.</p>
                 </div>
             </div>
         </section>
@@ -244,7 +224,7 @@
     </div>
 
     <footer>
-        <p>© 2026 Only Paws by Vanna | Premium Pet Grooming Goa</p>
+        <p>© 2026 Only Paws by Vanna</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
