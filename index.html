@@ -147,8 +147,71 @@
             border-radius: 2px;
         }
 
-        /* --- GRID/FLEX CONTAINERS --- */
-        .reviews-grid, .services-container {
+        /* --- FEEDBACK / REVIEWS --- */
+        .reviews-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .reviews-grid {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 15px;
+            width: 100%;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .reviews-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Review Card is now a Link */
+        .review-card {
+            flex: 0 0 85%;
+            scroll-snap-align: center;
+            background: #fff;
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid var(--light-purple);
+            min-width: 270px;
+            text-decoration: none; /* Remove underline */
+            color: inherit;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-purple);
+        }
+
+        /* View More Button Styling */
+        .view-more-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-purple);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 10px rgba(106, 27, 154, 0.2);
+        }
+
+        .view-more-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--accent-purple);
+            box-shadow: 0 6px 15px rgba(156, 39, 176, 0.4);
+        }
+
+        /* --- SERVICES --- */
+        .services-container {
             display: flex;
             gap: 15px;
             overflow-x: auto;
@@ -158,11 +221,11 @@
             -ms-overflow-style: none;
         }
 
-        .reviews-grid::-webkit-scrollbar, .services-container::-webkit-scrollbar {
+        .services-container::-webkit-scrollbar {
             display: none;
         }
 
-        .review-card, .service-column {
+        .service-column {
             flex: 0 0 85%;
             scroll-snap-align: center;
             background: #fff;
@@ -298,20 +361,16 @@
             #home { background-attachment: scroll; }
 
             .about-wrap {
-                flex-direction: row; /* Force side-by-side */
+                flex-direction: row; 
                 align-items: center;
                 gap: 15px;
                 text-align: left;
             }
 
             .owner-img {
-                width: 100px; /* Reduced size for mobile fit */
+                width: 100px;
                 height: 100px;
                 box-shadow: 4px 4px 0px var(--primary-purple);
-            }
-
-            .about-text {
-                flex: 1;
             }
 
             .about-text h2 {
@@ -320,9 +379,7 @@
                 margin-bottom: 5px;
             }
 
-            .about-text h2::after {
-                margin: 5px 0;
-            }
+            .about-text h2::after { margin: 5px 0; }
 
             .about-text p {
                 font-size: 0.85rem;
@@ -362,22 +419,25 @@
 
         <section id="reviews">
             <h2 data-aos="fade-up">Feedback</h2>
-            <div class="reviews-grid">
-                <div class="review-card" data-aos="zoom-in">
-                    <div style="color: #fbbc04; margin-bottom: 10px;">★★★★★</div>
-                    <p>"Excellent service! Vanna is so patient with my nervous cat. Highly recommend!"</p>
-                    <small><strong>— Sarah J.</strong></small>
+            <div class="reviews-container">
+                <div class="reviews-grid">
+                    <a href="https://maps.app.goo.gl/Rk8sJaNTPnm63B919" target="_blank" class="review-card" data-aos="zoom-in">
+                        <div style="color: #fbbc04; margin-bottom: 10px;">★★★★★</div>
+                        <p>"Excellent service! Vanna is so patient with my nervous cat. Highly recommend!"</p>
+                        <small><strong>— Sarah J.</strong></small>
+                    </a>
+                    <a href="https://maps.app.goo.gl/Rk8sJaNTPnm63B919" target="_blank" class="review-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div style="color: #fbbc04; margin-bottom: 10px;">★★★★★</div>
+                        <p>"Professional, clean environment, and my dog looks amazing every single time."</p>
+                        <small><strong>— Mike R.</strong></small>
+                    </a>
+                    <a href="https://maps.app.goo.gl/Rk8sJaNTPnm63B919" target="_blank" class="review-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div style="color: #fbbc04; margin-bottom: 10px;">★★★★★</div>
+                        <p>"The best grooming experience in Goa. Truly loves the animals."</p>
+                        <small><strong>— Elena P.</strong></small>
+                    </a>
                 </div>
-                <div class="review-card" data-aos="zoom-in" data-aos-delay="100">
-                    <div style="color: #fbbc04; margin-bottom: 10px;">★★★★★</div>
-                    <p>"Professional, clean environment, and my dog looks amazing every single time."</p>
-                    <small><strong>— Mike R.</strong></small>
-                </div>
-                <div class="review-card" data-aos="zoom-in" data-aos-delay="200">
-                    <div style="color: #fbbc04; margin-bottom: 10px;">★★★★★</div>
-                    <p>"The best grooming experience in Goa. Truly loves the animals."</p>
-                    <small><strong>— Elena P.</strong></small>
-                </div>
+                <a href="https://www.google.com/maps/place/Only+Paws+By+Vanna/@15.2244131,73.9431714,17z/data=!4m8!3m7!1s0x3bbfb38783fa4a51:0xa23e1848d5334f4f!8m2!3d15.224408!4d73.9480423!9m1!1b1!16s%2Fg%2F11kqq4t603?entry=ttu&g_ep=EgoyMDI2MDQxMy4wIKXMDSoASAFQAw%3D%3D " target="_blank" class="view-more-btn" data-aos="fade-up">View All Reviews</a>
             </div>
         </section>
 
