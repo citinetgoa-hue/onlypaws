@@ -25,12 +25,12 @@
             overflow-x: hidden; padding-top: 60px; 
         }
 
-        /* --- HEADER: FORCED SINGLE LINE --- */
+        /* --- HEADER --- */
         header {
             position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px); display: flex; justify-content: space-between; 
             align-items: center; padding: 10px 4%; z-index: 1000; box-shadow: 0 2px 15px rgba(106, 27, 154, 0.1);
-            flex-wrap: nowrap; /* Prevents logo and nav from splitting */
+            flex-wrap: nowrap;
         }
         
         .logo { display: flex; align-items: center; gap: 6px; text-decoration: none; flex-shrink: 0; }
@@ -40,16 +40,6 @@
         nav { display: flex; align-items: center; gap: 10px; }
         nav a { text-decoration: none; color: #555; font-weight: 700; font-size: 11px; white-space: nowrap; }
         nav a:hover { color: var(--primary-purple); }
-
-        /* --- HOME --- */
-        #home {
-            min-height: 65vh; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 20px;
-            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
-                        url('https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat fixed;
-        }
-        #home h1 { font-size: 2.2rem; font-weight: 800; color: var(--primary-purple); margin-bottom: 10px; }
-        #home p { font-size: 0.95rem; color: #333; max-width: 450px; background: rgba(255,255,255,0.7); padding: 10px; border-radius: 10px; }
 
         /* --- SECTIONS --- */
         section { padding: 40px 5%; }
@@ -68,40 +58,35 @@
             border-radius: 15px; border: 1px solid var(--light-purple); min-width: 260px;
         }
 
+        /* --- BUTTON STYLING --- */
+        .view-more-btn { 
+            display: block; width: fit-content; margin: 20px auto 0; padding: 12px 30px;
+            background: var(--primary-purple); color: #fff; text-decoration: none; 
+            border-radius: 50px; font-weight: 700; font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(106, 27, 154, 0.2);
+        }
+
+        /* --- SERVICES --- */
+        .service-column h3 { color: var(--primary-purple); margin-bottom: 12px; font-size: 1.3rem; text-align: center; }
         .service-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 12px; }
         .service-gallery img { width: 100%; height: 90px; object-fit: cover; border-radius: 8px; }
         .service-gallery img.large { grid-column: span 2; height: 130px; }
-        
         .service-list { list-style: none; }
         .service-list li { padding: 6px 0; border-bottom: 1px solid var(--light-purple); font-size: 0.8rem; display: flex; align-items: center; }
         .service-list li::before { content: "💜"; margin-right: 8px; }
 
-        /* --- FLOATING SOCIALS: THE FIX --- */
+        /* --- FLOATING SOCIALS --- */
         .floating-nav { 
-            position: fixed; 
-            right: 15px; 
-            bottom: 20px; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 12px; 
-            z-index: 9999;
-            background: none !important; /* Forces no background */
-            pointer-events: none; /* Let clicks pass through empty space */
+            position: fixed; right: 15px; bottom: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 9999;
+            background: transparent !important; pointer-events: none; 
         }
-
         .float-btn { 
-            pointer-events: auto; /* Only buttons react to touch */
-            width: 50px; height: 50px; border-radius: 50%; display: flex; 
-            justify-content: center; align-items: center; color: white; 
-            font-size: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
-            text-decoration: none;
+            pointer-events: auto; width: 50px; height: 50px; border-radius: 50%; display: flex; 
+            justify-content: center; align-items: center; color: white; font-size: 24px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2); text-decoration: none;
         }
         .wa { background-color: #25D366; }
         .ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
-
-        /* --- ABOUT --- */
-        .about-wrap { text-align: center; }
-        .owner-img { width: 220px; height: 280px; object-fit: cover; border-radius: 15px; box-shadow: 8px 8px 0px var(--primary-purple); margin-bottom: 20px; }
 
         /* --- DESKTOP VIEW --- */
         @media (min-width: 850px) {
@@ -111,8 +96,13 @@
             nav a { font-size: 13px; margin-left: 20px; }
             .reviews-grid, .services-container { display: grid; grid-template-columns: repeat(3, 1fr); overflow-x: visible; }
             .review-card, .service-column { flex: none; width: auto; }
-            .about-wrap { display: flex; flex-direction: row; text-align: left; gap: 40px; }
-            #home h1 { font-size: 3.5rem; }
+            .about-wrap { display: flex; flex-direction: row; align-items: center; text-align: left; gap: 40px; }
+            .owner-img { width: 300px; height: 380px; }
+        }
+
+        @media (max-width: 849px) {
+            .about-wrap { text-align: center; }
+            .owner-img { width: 220px; height: 280px; object-fit: cover; border-radius: 15px; box-shadow: 8px 8px 0px var(--primary-purple); margin-bottom: 20px; }
         }
 
         footer { text-align: center; padding: 20px; background: var(--primary-purple); color: #fff; font-size: 0.75rem; }
@@ -123,7 +113,7 @@
     <header>
         <a href="#home" class="logo">
             <img src="logo.png.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
-            <span class="logo-text"></span>
+            <span class="logo-text">ONLY PAWS</span>
         </a>
         <nav>
             <a href="#home">HOME</a>
@@ -158,6 +148,7 @@
                     <small><strong>— Elena P.</strong></small>
                 </div>
             </div>
+            <a href="https://maps.google.com" class="view-more-btn" target="_blank">View All Reviews</a>
         </section>
 
         <section id="services">
@@ -224,7 +215,7 @@
     </div>
 
     <footer>
-        <p>© 2026 Only Paws by Vanna</p>
+        <p>© 2026 Only Paws by Vanna | Premium Pet Grooming Goa</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
